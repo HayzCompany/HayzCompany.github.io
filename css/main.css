@@ -24,20 +24,23 @@ body {
 .logo {
   /* width: 150px; */
   /* Делаем резиновость(изменяется вместе с расширением экрана */
-  width: calc(var(--index) * 5);
+  /* width: calc(var(--index) * 5); */
+  --logo-size: calc(var(--index) * 7.8);
+  width: var(--logo-size);
   /* height: 150px; */
-  height: calc(var(--index) * 5);
+  /* height: calc(var(--index) * 5); */
+  height: var(--logo-size);
   background-repeat: no-repeat;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  /* z-index: 1; */
+  left: calc(51% - calc(var(--logo-size) / 2));
+  top: calc(var(--index) * 2.8);
+  z-index: 1;
 }
 .layers {
   perspective: 1000px;
   /* Убираем ползунок */
 
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 .layers__container {
   height: 100vh;
@@ -46,7 +49,7 @@ body {
   transform: rotateX(var(--move-y)) rotateY(var(--move-x));
   /* Добавить больше ресурсов устройства */
   will-change: transform;
-  /* transition: transform var(--transition); */
+  transition: transform var(--transition);
 }
 .layers__item {
   position: absolute;
@@ -65,7 +68,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-/* .layer-1 {
+.layer-1 {
   transform: translateZ(-155px) scale(1.06);
 }
 .layer-2 {
@@ -82,12 +85,51 @@ body {
 }
 .layer-6 {
   transform: translateZ(380px);
-} */
-/* .hero-content {
+}
+.hero-content {
   font-size: calc(var(--index) * 2.9);
   text-align: center;
   text-transform: uppercase;
+  letter-spacing: calc(var(--index) * -0.15);
+  line-height: 1.35em;
+  margin-top: calc(var(--index) * 5.5);
 }
 .hero-content span {
   display: block;
-} */
+}
+
+.hero-content__p {
+  text-transform: none;
+  font-family: merriweather-italic-3d;
+  letter-spacing: normal;
+  font-size: calc(var(--index) * 1);
+  line-height: 1.5;
+}
+.button-start {
+  font-family: Arial;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: calc(var(--index) * 0.71);
+  letter-spacing: -0.02vw;
+  padding: calc(var(--index) * 0.71) calc(var(--index) * 0.71);
+  color: #fff;
+  border-radius: 10em;
+  background-color: orange;
+
+  outline: none;
+  cursor: pointer;
+}
+.button-start:hover {
+  background-color: transparent;
+  border: rgb(255, 255, 255 / 0.4) 3px solid;
+  border-radius: 10em;
+  padding: 10px 15px;
+  /* text-decoration: underline; */
+}
+
+/* Перечислить элементы, которые нам мешают */
+.layer-4,
+.layer-5,
+.layer-6 {
+  pointer-events: none;
+}
